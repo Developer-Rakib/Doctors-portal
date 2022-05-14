@@ -12,9 +12,9 @@ import Appoinment from './Appoinment';
 const Home = () => {
 
     return (
-        <div className='mt-[64px] sm:w-10/12 mx-auto'>
-            <Banner></Banner>
-            <div className='flex justify-evenly flex-wrap my-10'>
+        <div className='mt-[64px] '>
+            <Banner className='sm:w-10/12 mx-auto'></Banner>
+            <div className='flex justify-evenly flex-wrap my-10 sm:w-10/12 mx-auto'>
                 <Info
                     img={clock}
                     title={"Opening Hours"}
@@ -34,9 +34,9 @@ const Home = () => {
                     bg={"bg-gradient-to-r from-secondary to-primary"}
                 ></Info>
             </div>
-            <Services></Services>
-            <DentalCare></DentalCare>
-            <Appoinment></Appoinment>
+            <Services className='sm:w-10/12 mx-auto'></Services>
+            <DentalCare className='sm:w-10/12 mx-auto'></DentalCare>
+            <Appoinment className='w-full'></Appoinment>
         </div>
     );
 };
