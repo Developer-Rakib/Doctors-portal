@@ -6,14 +6,14 @@ import teat from '../../assets/images/whitening.png';
 
 const Services = () => {
     const services = [
-        {img: fluride, title: "Fluoride Treatment", description: "Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the"},
-        {img: cavity, title: "Cavity Filling", description: "Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the"},
-        {img: teat, title: "Teeth Whitening", description: "Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the"},
+        {img: fluride, title: "Fluoride Treatment", description: "Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been."},
+        {img: cavity, title: "Cavity Filling", description: "Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been."},
+        {img: teat, title: "Teeth Whitening", description: "Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been."},
     ]
     return (
         <div className='text-center my-16'>
-            <h5 className="font-semibold text-lg text-primary uppercase">Our Services</h5>
-            <h3 className="text-3xl">Services We Provide</h3>
+            <h5 className="font-bold text-lg text-secondary uppercase">Our Services</h5>
+            <h3 className="text-4xl">Services We Provide</h3>
             <div className='flex justify-evenly flex-wrap mt-5'>
                 {
                     services.map((service, i) => <Service

@@ -1,5 +1,6 @@
 import React from 'react';
 import cheir from '../../assets/images/chair.png'
+import CommonBtn from '../Shared/CommonBtn';
 
 const Banner = () => {
     return (
@@ -10,7 +11,7 @@ const Banner = () => {
                     <div className='w-full'>
                         <h1 class="text-5xl font-bold">Your New Smile Starts Here</h1>
                         <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button class="btn text-white border-none bg-gradient-to-r from-secondary to-primary">Get Started</button>
+                        <CommonBtn>Get Started</CommonBtn>
                     </div>
                 </div>
             </div>

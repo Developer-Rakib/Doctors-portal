@@ -5,6 +5,8 @@ import clock from '../../assets/icons/clock.svg';
 import phone from '../../assets/icons/phone.svg';
 import marker from '../../assets/icons/marker.svg';
 import Services from './Services';
+import DentalCare from './DentalCare';
+import Appoinment from './Appoinment';
 
 
 const Home = () => {
@@ -33,6 +35,8 @@ const Home = () => {
                 ></Info>
             </div>
             <Services></Services>
+            <DentalCare></DentalCare>
+            <Appoinment></Appoinment>
         </div>
     );
 };
