@@ -4,13 +4,15 @@ import Info from './Info';
 import clock from '../../assets/icons/clock.svg';
 import phone from '../../assets/icons/phone.svg';
 import marker from '../../assets/icons/marker.svg';
+import Services from './Services';
 
 
 const Home = () => {
+
     return (
         <div className='mt-[64px] sm:w-10/12 mx-auto'>
             <Banner></Banner>
-            <div className='flex justify-evenly my-10'>
+            <div className='flex justify-evenly flex-wrap my-10'>
                 <Info
                     img={clock}
                     title={"Opening Hours"}
@@ -30,6 +32,7 @@ const Home = () => {
                     bg={"bg-gradient-to-r from-secondary to-primary"}
                 ></Info>
             </div>
+            <Services></Services>
         </div>
     );
 };
