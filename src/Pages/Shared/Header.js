@@ -10,8 +10,8 @@ const Header = () => {
         <li><Link to='/contact'>Contact Us</Link></li>
     </>
     return (
-        <div className='w-full sm:w-10/12 sm:mx-auto'>
-            <div class="navbar bg-base-100 sm:flex sm:justify-between">
+        <div className='bg-white fixed top-0 right-0 left-0'>
+            <div class="navbar sm:flex sm:justify-between w-full sm:w-10/12 sm:mx-auto">
                 <div class="navbar-start w-11/12 sm:w-auto flex justify-between">
                     <div class="dropdown">
                         <label tabindex="0" class="btn btn-ghost lg:hidden">
