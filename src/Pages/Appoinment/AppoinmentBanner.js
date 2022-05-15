@@ -18,7 +18,7 @@ const AppoinmentBanner = ({date, setDate}) => {
                         ></DayPicker>
                     </div>
                 </div>
-                <img src={chier} class='w-11/12 mx-auto sm:w-5/12' alt='' />
+                <img src={chier} class='w-11/12 mx-auto sm:mx-0 sm:w-5/12' alt='' />
             </div>
         </div>
     );

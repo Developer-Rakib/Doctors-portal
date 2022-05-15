@@ -8,6 +8,7 @@ const Header = () => {
         <li><Link to='/appoinment'>Appoinment</Link></li>
         <li><Link to='/reviews'>Reviews</Link></li>
         <li><Link to='/contact'>Contact Us</Link></li>
+        <li><Link to='/login'>Login</Link></li>
     </>
     return (
         <div className='bg-white fixed top-0 right-0 left-0 z-10'>
