@@ -4,6 +4,7 @@ import AppoinmentBanner from './AppoinmentBanner';
 
 const AppoinmenPage = () => {
     const [date, setDate] = useState(new Date());
+    
 
     return (
         <div className='mt-[64px]'>

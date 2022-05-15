@@ -6,8 +6,8 @@ import { format } from 'date-fns';
 
 const AppoinmentBanner = ({date, setDate}) => {
     return (
-        <div class='hero myContainer min-h-[70vh] bg-[url("https://i.ibb.co/GxSh87H/bg.png")]'>
-            <div class="flex justify-evenly ">
+        <div class='hero min-h-[70vh] bg-[url("https://i.ibb.co/GxSh87H/bg.png")]'>
+            <div class="flex justify-evenly flex-col-reverse sm:flex-row">
                 <div className=''>
                     <div className='w-full'>
                         <DayPicker
@@ -18,7 +18,7 @@ const AppoinmentBanner = ({date, setDate}) => {
                         ></DayPicker>
                     </div>
                 </div>
-                <img src={chier} class='w-full sm:w-5/12' alt='' />
+                <img src={chier} class='w-11/12 mx-auto sm:w-5/12' alt='' />
             </div>
         </div>
     );
