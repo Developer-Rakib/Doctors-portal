@@ -24,11 +24,15 @@ const Testimonials = () => {
         },
     ]
     return (
-        <div className='myContainer pt-10 relative'>
-            <h5 className="font-bold text-lg text-secondary">Testimonial</h5>
-            <h3 className="text-4xl">What Our Patients Says</h3>
-            <img className='absolute top-2 right-3 w-40' src={quote} alt="" />
-            <div className='flex flex-wrap justify-evenly'>
+        <div className='myContainer pt-7 relative'>
+            <div className='flex justify-between items-center'>
+                <div>
+                    <h5 className="font-bold text-base sm:text-lg text-secondary">Testimonial</h5>
+                    <h3 className="text-3xl sm:text-4xl">What Our Patients Says</h3>
+                </div>
+                <img className='w-24 sm:w-40' src={quote} alt="" />
+            </div>
+            <div className='flex flex-wrap justify-evenly my-10 sm:my-24'>
                 {
                     testimonials.map((testimonial, i) => <Testimonial
                         key={i}

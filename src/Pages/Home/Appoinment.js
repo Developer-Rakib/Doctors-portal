@@ -4,7 +4,7 @@ import CommonBtn from '../Shared/CommonBtn';
 
 const Appoinment = () => {
     return (
-        <div class="hero mb-16 mt-40 h-[480px] text-white bg-[url('https://i.ibb.co/kD56v80/appointment.png')]">
+        <div class="hero mb-16 mt-10 sm:mt-40 h-[550px] sm:h-[480px] text-white bg-[url('https://i.ibb.co/kD56v80/appointment.png')]">
             <div class="hero-content flex-col lg:flex-row">
                 <img className='sm:block hidden sm:h-[600px] mt-[-135px] rounded-lg' src={doctor} alt="treatment"/>
                 <div className='w-11/12 sm:w-[500px] sm:ml-5'>

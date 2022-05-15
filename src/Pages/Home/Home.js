@@ -8,6 +8,7 @@ import Services from './Services';
 import DentalCare from './DentalCare';
 import Appoinment from './Appoinment';
 import Testimonials from './Testimonials';
+import Contact from './Contact';
 
 
 const Home = () => {
@@ -39,6 +40,7 @@ const Home = () => {
             <DentalCare></DentalCare>
             <Appoinment className='w-full'></Appoinment>
             <Testimonials></Testimonials>
+            <Contact></Contact>
         </div>
     );
 };
