@@ -6,7 +6,7 @@ import phone from '../../assets/icons/phone.svg';
 import marker from '../../assets/icons/marker.svg';
 import Services from './Services';
 import DentalCare from './DentalCare';
-import Appoinment from './Appoinment';
+import DoctorAppoinment from './DoctorAppoinment';
 import Testimonials from './Testimonials';
 import Contact from './Contact';
 
@@ -38,7 +38,7 @@ const Home = () => {
             </div>
             <Services></Services>
             <DentalCare></DentalCare>
-            <Appoinment className='w-full'></Appoinment>
+            <DoctorAppoinment className='w-full'></DoctorAppoinment>
             <Testimonials></Testimonials>
             <Contact></Contact>
         </div>
