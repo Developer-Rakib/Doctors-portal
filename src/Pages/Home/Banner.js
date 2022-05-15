@@ -4,7 +4,7 @@ import CommonBtn from '../Shared/CommonBtn';
 
 const Banner = () => {
     return (
-        <div class='hero min-h-[90vh] bg-[url("https://i.ibb.co/GxSh87H/bg.png")]'>
+        <div class='hero myContainer min-h-[90vh] bg-[url("https://i.ibb.co/GxSh87H/bg.png")]'>
             <div class="hero-content flex-col  lg:flex-row-reverse">
                 <img src={cheir} class='w-6/12' alt='' />
                 <div >

@@ -11,7 +11,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.myContainer{
+  width: 84%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width:600px) {
+  .myContainer{
+    width: 90%;
+  }
 }

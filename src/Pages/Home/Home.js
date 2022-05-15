@@ -7,14 +7,15 @@ import marker from '../../assets/icons/marker.svg';
 import Services from './Services';
 import DentalCare from './DentalCare';
 import Appoinment from './Appoinment';
+import Testimonials from './Testimonials';
 
 
 const Home = () => {
 
     return (
         <div className='mt-[64px] '>
-            <Banner className='sm:w-10/12 mx-auto'></Banner>
-            <div className='flex justify-evenly flex-wrap my-10 sm:w-10/12 mx-auto'>
+            <Banner></Banner>
+            <div className='flex justify-evenly flex-wrap my-10 myContainer'>
                 <Info
                     img={clock}
                     title={"Opening Hours"}
@@ -34,9 +35,10 @@ const Home = () => {
                     bg={"bg-gradient-to-r from-secondary to-primary"}
                 ></Info>
             </div>
-            <Services className='sm:w-10/12 mx-auto'></Services>
-            <DentalCare className='sm:w-10/12 mx-auto'></DentalCare>
+            <Services></Services>
+            <DentalCare></DentalCare>
             <Appoinment className='w-full'></Appoinment>
+            <Testimonials></Testimonials>
         </div>
     );
 };
