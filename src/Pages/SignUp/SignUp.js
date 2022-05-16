@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import Loader from '../Shared/Loader';
+import SocialLogin from '../Shared/SocialLogin';
 
 
 
@@ -105,12 +106,12 @@ const SignUp = () => {
                         {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                     </label>
 
-                    <input className='bg-accent border border-accent hover:bg-white hover:text-gray-700 transition-all cursor-pointer rounded-md py-3 text-gray-300' value={"SIGN UP"} type="submit" />
+                    <input className='font-semibold bg-accent border border-accent hover:bg-white hover:text-gray-700 transition-all cursor-pointer rounded-md py-3 text-gray-200' value={"SIGN UP"} type="submit" />
                 </form>
                 <div className='w-9/12 mx-auto'>
                     <small className='mt-4 mx-2 inline-block'>Aleady Have Account ? <Link className='text-secondary font-semibold' to={"/login"}>Log in</Link></small>
                     <div class="divider">OR</div>
-                    <button class="btn btn-outline btn-accent w-full">CONTINUE WITH GOOGLE</button>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

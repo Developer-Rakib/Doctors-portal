@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loader from '../Shared/Loader';
+import SocialLogin from '../Shared/SocialLogin';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -95,12 +96,12 @@ const Login = () => {
                         {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                     </label>
 
-                    <input className='bg-accent border border-accent hover:bg-white hover:text-gray-700 transition-all cursor-pointer rounded-md py-3 text-gray-300' value={"SIGN UP"} type="submit" />
+                    <input className='font-semibold bg-accent border border-accent hover:bg-white hover:text-gray-700 transition-all cursor-pointer rounded-md py-3 text-gray-200' value={"LOGIN"} type="submit" />
                 </form>
                 <div className='w-9/12 mx-auto'>
                     <small className='mt-4 mx-2 inline-block'>New to Doctors Portal ? <Link className='text-secondary font-semibold' to={"/signUp"}>Create new Account</Link></small>
                     <div class="divider">OR</div>
-                    
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

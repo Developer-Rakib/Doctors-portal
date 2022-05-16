@@ -7,6 +7,7 @@ import Footer from './Pages/Shared/Footer';
 import Header from './Pages/Shared/Header';
 import SignUp from './Pages/SignUp/SignUp';
 import { Toaster } from 'react-hot-toast'
+import RequirdAuth from './Pages/Shared/RequirdAuth';
 
 function App() {
   return (
@@ -15,7 +16,11 @@ function App() {
       <Toaster />
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/appoinment' element={<AppoinmenPage></AppoinmenPage>}></Route>
+        <Route path='/appoinment' element={
+          <RequirdAuth>
+            <AppoinmenPage></AppoinmenPage>
+          </RequirdAuth>
+        }></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signUp' element={<SignUp></SignUp>}></Route>
       </Routes>
