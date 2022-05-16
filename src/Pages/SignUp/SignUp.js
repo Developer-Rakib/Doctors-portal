@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
+import Loader from '../Shared/Loader';
+
 
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const navigate = useNavigate()
+    const location = useLocation();
     const [
         createUserWithEmailAndPassword,
         user,
@@ -14,11 +19,15 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    let from = location.state?.from?.pathname || "/";
+
+
 
        // handle error 
        useEffect(() => {
-        if (error) {
+        if (error || updateError) {
             console.log(error.code);
+            console.log(updateError.code);
             switch (error.code) {
                 case "auth/email-already-in-use":
                     toast.error('Email Aleady Exist!', { id: "signup" })
@@ -32,12 +41,23 @@ const SignUp = () => {
                     break;
             }
         }
-    }, [error])
+    }, [error, updateError])
+
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true });
+            toast.success("Login Successfull!", { id: "signin" })
+        }
+    }, [user, navigate, from])
     
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
 
+    }
+
+    if (loading || updating) {
+        return <Loader></Loader>;
     }
     return (
         <div className='mt-[64px] py-16  '>

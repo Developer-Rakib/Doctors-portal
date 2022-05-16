@@ -1,14 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
+import toast from 'react-hot-toast';
 
 const Header = () => {
+    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
+    const handleLogout= ()=>{
+        signOut(auth)
+        .then(() => {
+            navigate('/login')
+            toast.success('Logout Succes!')
+        })
+
+    }
     const manu = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/appoinment'>Appoinment</Link></li>
         <li><Link to='/reviews'>Reviews</Link></li>
         <li><Link to='/contact'>Contact Us</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        {
+            user ?  <button onClick={handleLogout} className='btn btn-ghost text-accent'>Logout</button>
+            :
+            <li><Link to='/login'>Login</Link></li>
+        }
     </>
     return (
         <div className='bg-white fixed top-0 right-0 left-0 z-10'>
