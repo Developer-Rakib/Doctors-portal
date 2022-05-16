@@ -7,13 +7,13 @@ import BookingModal from './BookingModal';
 const Appoinment = ({ date }) => {
     const [services, setServices] = useState([]);
     const [treatment, setTreatment] = useState(null);
-    console.log(treatment);
+    // console.log(treatment);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/services")
+        axios.get(`http://localhost:5000/available?date=${format(date, ("PP"))}`)
             .then(data => setServices(data.data))
     }, [])
-    // console.log(services);
+    console.log(services);
     return (
         <div className='text-center myContainer py-10'>
             <h4 className='text-2xl font-semibold text-secondary mb-4'>Available Appoinment on {format(date, 'PP')}</h4>

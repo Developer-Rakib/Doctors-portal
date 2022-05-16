@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -8,10 +9,10 @@ import Loader from '../Shared/Loader';
 import SocialLogin from '../Shared/SocialLogin';
 
 const Login = () => {
+    const [email, setEmail] = useState("")
     const { register, formState: { errors }, handleSubmit } = useForm();
     const location = useLocation();
     const navigate = useNavigate();
-    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
     const [
         signInWithEmailAndPassword,
@@ -54,9 +55,34 @@ const Login = () => {
         return <Loader></Loader>;
     }
     const onSubmit = data => {
-        // console.log(data.email, data.password);
         signInWithEmailAndPassword(data.email, data.password)
     };
+    const handleForgetPass = () => {
+
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                toast.success('Mail Sent!', { id: "signup" })
+            })
+            .catch((error) => {
+                console.log(error.code);
+                const errorCode = error.code;
+
+                if (errorCode === "auth/invalid-email") {
+                    toast.error('This Email is not Valid!', { id: "signup" })
+
+                }
+                if (errorCode === "auth/missing-email") {
+                    toast.error('Please Enter Email', { id: "signup" })
+
+                }
+                if (errorCode === "auth/user-not-found") {
+                    toast.error('User not With This Email. Please SignUp', { id: "signup" })
+
+                }
+            });
+
+    }
+  
 
 
     return (
@@ -66,31 +92,39 @@ const Login = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-9/12 mx-auto">
 
 
-                    <input className='input input-bordered input-md my-0.5' placeholder='Email'{...register("email", {
-                        required: {
-                            value: true,
-                            message: 'Email is Required'
-                        },
-                        pattern: {
-                            value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                            message: 'Provide a valid Email'
-                        }
-                    })} />
+                    <input
+                        className='input input-bordered input-md my-0.5'
+                        placeholder='Email'
+                        {...register("email", {
+                            required: {
+                                value: true,
+                                message: 'Email is Required'
+                            },
+                            pattern: {
+                                value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                                message: 'Provide a valid Email'
+                            }
+                        })} 
+                        onBlur={(e)=> setEmail(e.target.value)}
+                        />
                     <label className="label">
                         {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                         {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                     </label>
 
-                    <input className='input input-bordered input-md my-0.5' placeholder='Password' type="password" {...register("password", {
-                        required: {
-                            value: true,
-                            message: 'Password is Required'
-                        },
-                        minLength: {
-                            value: 6,
-                            message: 'Must be 6 characters or longer'
-                        }
-                    })} />
+                    <input
+                        className='input input-bordered input-md my-0.5' placeholder='Password'
+                        type="password"
+                        {...register("password", {
+                            required: {
+                                value: true,
+                                message: 'Password is Required'
+                            },
+                            minLength: {
+                                value: 6,
+                                message: 'Must be 6 characters or longer'
+                            }
+                        })} />
                     <label className="label">
                         {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                         {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
@@ -100,6 +134,10 @@ const Login = () => {
                 </form>
                 <div className='w-9/12 mx-auto'>
                     <small className='mt-4 mx-2 inline-block'>New to Doctors Portal ? <Link className='text-secondary font-semibold' to={"/signUp"}>Create new Account</Link></small>
+                    <small className='mx-2 inline-block'>Forget Password ? <button
+                        className='text-secondary font-semibold'
+                        onClick={handleForgetPass}
+                    >Click Here</button></small>
                     <div class="divider">OR</div>
                     <SocialLogin></SocialLogin>
                 </div>
