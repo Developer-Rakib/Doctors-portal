@@ -5,7 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import auth from '../../firebase.init';
 
-const BookingModal = ({ treatment, setTreatment, date }) => {
+const BookingModal = ({ treatment, setTreatment, date, refetch }) => {
     const { _id, name, slots } = treatment;
     const [user] = useAuthState(auth);
     // console.log(user.displayName);
@@ -35,15 +35,16 @@ const BookingModal = ({ treatment, setTreatment, date }) => {
                     // console.log(data.data.message)
                     if (data.data.message.insertedId) {
                         toast.success(`Appoinment is set, ${format(date, "PP")} at ${slot}`)
+                        refetch()
+                        setTreatment(null)
                     }
-                    else{
+                    else {
                         toast.error("Somthing is Wrong")
                     }
                 }
 
             })
 
-        setTreatment(null)
     }
     return (
         <div>
