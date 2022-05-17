@@ -13,6 +13,7 @@ const Header = () => {
     const handleLogout = () => {
         signOut(auth)
             .then(() => {
+                localStorage.removeItem('accessToken')
                 navigate('/login')
                 toast.success('Logout Succes!')
             })
@@ -25,10 +26,14 @@ const Header = () => {
         <li><Link to='/reviews'>Reviews</Link></li>
         <li><Link to='/contact'>Contact Us</Link></li>
         {
+            user && <li><Link to='/dashboard'>Dashboard</Link></li>
+        }
+        {
             user ? <button onClick={handleLogout} className='btn btn-ghost text-accent w-[88px] '>Logout</button>
                 :
                 <li><Link to='/login'>Login</Link></li>
         }
+        
 
     </>
     return (

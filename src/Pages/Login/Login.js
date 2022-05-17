@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/useToken';
 import Loader from '../Shared/Loader';
 import SocialLogin from '../Shared/SocialLogin';
 
@@ -20,6 +21,9 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [token, setToken] = useToken(user)
+    // console.log(token);
+
     let from = location.state?.from?.pathname || "/";
 
 
@@ -45,11 +49,12 @@ const Login = () => {
     }, [error])
 
     useEffect(() => {
-        if (user) {
+        if (token) {
+            // console.log(token);
             navigate(from, { replace: true });
-            toast.success("Login Successfull!", { id: "signin" })
+            toast.success('Login with google Successfully!', { id: "social_login" })
         }
-    }, [user, navigate, from])
+    }, [token, from, navigate])
 
     if (loading) {
         return <Loader></Loader>;

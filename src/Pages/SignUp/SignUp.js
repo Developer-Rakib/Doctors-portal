@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import Loader from '../Shared/Loader';
 import SocialLogin from '../Shared/SocialLogin';
+import useToken from '../../Hooks/useToken';
 
 
 
@@ -19,6 +20,8 @@ const SignUp = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [token, setToken] = useToken(user)
+    // console.log(token);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     let from = location.state?.from?.pathname || "/";
 
@@ -45,11 +48,12 @@ const SignUp = () => {
     }, [error, updateError])
 
     useEffect(() => {
-        if (user) {
+        if (token) {
+            // console.log(token);
             navigate(from, { replace: true });
-            toast.success("Login Successfull!", { id: "signin" })
+            toast.success('Login with google Successfully!', { id: "social_login" })
         }
-    }, [user, navigate, from])
+    }, [token, from, navigate])
     
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);

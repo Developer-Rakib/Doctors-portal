@@ -11,6 +11,7 @@ import RequirdAuth from './Pages/Shared/RequirdAuth';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import AppoinmentList from './Pages/Dashboard/AppoinmentList';
 import Review from './Pages/Dashboard/Review';
+import History from './Pages/Dashboard/History';
 
 function App() {
   return (
@@ -30,7 +31,8 @@ function App() {
           </RequirdAuth>
         }>
           <Route index element={<AppoinmentList></AppoinmentList>}></Route>
-          <Route path='review' element={<Review></Review>}></Route>
+          <Route path='myReview' element={<Review></Review>}></Route>
+          <Route path='myHistory' element={<History></History>}></Route>
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signUp' element={<SignUp></SignUp>}></Route>

@@ -3,10 +3,13 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/useToken';
 
 const SocialLogin = () => {
 
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [token, setToken] = useToken(user)
+    // console.log(token);
     const navigate = useNavigate()
     const location = useLocation()
     let from = location.state?.from?.pathname || "/";
@@ -28,20 +31,16 @@ const SocialLogin = () => {
             }
         }
     }, [error])
+    
 
     // get token and set in localStorage
     useEffect(() => {
-        if (user) {
-            // (async () => {
-            //     const email = user.user.email;
-            //     const { data } = await axios.post('https://floating-coast-61520.herokuapp.com/login', { email })
-            //     localStorage.setItem('accessToken', data.accessToken)
-            //     console.log(data);
-            // })()
+        if (token) {
+            // console.log(token);
             navigate(from, { replace: true });
             toast.success('Login with google Successfully!', { id: "social_login" })
         }
-    }, [user, from, navigate])
+    }, [token, from, navigate])
 
 
 
