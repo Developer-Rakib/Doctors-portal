@@ -43,23 +43,6 @@ const AppoinmentList = () => {
                 }
 
             })
-        // } 
-        // catch (error) {
-        //     console.log(error);
-        // if (error.response.status === 403 || error.response.status === 401) {
-        //     signOut(auth)
-        //         .then(() => {
-        //             navigate('/login')
-        //             if (error.response.status === 403) {
-        //                 toast.error("Alert! Your Login Token is expire, Please login Again!", { id: 'unauthorize' });
-        //             }
-        //             else {
-        //                 toast.error("Alert!! unauthorize access, You are Loged Out!", { id: 'unauthorize' });
-        //             }
-
-        //         })
-        // }
-        // }
     }, [user.email])
 
     // console.log(appoinments?.data);

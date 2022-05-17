@@ -17,6 +17,7 @@ const Dashboard = () => {
                     <li><Link className='border my-1' to={"/dashboard"}>My Appoinment</Link></li>
                     <li><Link className='border  my-1' to={"/dashboard/myReview"}>My Reiview</Link></li>
                     <li><Link className='border my-1' to={"/dashboard/myHistory"}>My History</Link></li>
+                    <li><Link className='border my-1' to={"/dashboard/allUsers"}>All Users</Link></li>
                 </ul>
 
             </div>
