@@ -8,12 +8,12 @@ import toast from 'react-hot-toast';
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
-    const handleLogout= ()=>{
+    const handleLogout = () => {
         signOut(auth)
-        .then(() => {
-            navigate('/login')
-            toast.success('Logout Succes!')
-        })
+            .then(() => {
+                navigate('/login')
+                toast.success('Logout Succes!')
+            })
 
     }
     const manu = <>
@@ -23,10 +23,11 @@ const Header = () => {
         <li><Link to='/reviews'>Reviews</Link></li>
         <li><Link to='/contact'>Contact Us</Link></li>
         {
-            user ?  <button onClick={handleLogout} className='btn btn-ghost text-accent'>Logout</button>
-            :
-            <li><Link to='/login'>Login</Link></li>
+            user ? <button onClick={handleLogout} className='btn btn-ghost text-accent w-[88px] '>Logout</button>
+                :
+                <li><Link to='/login'>Login</Link></li>
         }
+
     </>
     return (
         <div className='bg-white fixed top-0 right-0 left-0 z-10'>
@@ -47,6 +48,13 @@ const Header = () => {
                         {manu}
                     </ul>
                 </div>
+                {
+                    user &&
+                    // <label for="dashboard-drower" class="btn btn-primary drawer-button lg:hidden"></label>
+                    <label for="dashboard-drower" tabindex="1" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label>
+                }
             </div>
         </div>
     );

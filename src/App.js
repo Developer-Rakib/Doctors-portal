@@ -8,6 +8,9 @@ import Header from './Pages/Shared/Header';
 import SignUp from './Pages/SignUp/SignUp';
 import { Toaster } from 'react-hot-toast'
 import RequirdAuth from './Pages/Shared/RequirdAuth';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import AppoinmentList from './Pages/Dashboard/AppoinmentList';
+import Review from './Pages/Dashboard/Review';
 
 function App() {
   return (
@@ -21,6 +24,14 @@ function App() {
             <AppoinmenPage></AppoinmenPage>
           </RequirdAuth>
         }></Route>
+        <Route path='/dashboard' element={
+          <RequirdAuth>
+            <Dashboard></Dashboard>
+          </RequirdAuth>
+        }>
+          <Route index element={<AppoinmentList></AppoinmentList>}></Route>
+          <Route path='review' element={<Review></Review>}></Route>
+        </Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signUp' element={<SignUp></SignUp>}></Route>
       </Routes>
