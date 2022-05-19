@@ -13,6 +13,7 @@ import AppoinmentList from './Pages/Dashboard/AppoinmentList';
 import Review from './Pages/Dashboard/Review';
 import History from './Pages/Dashboard/History';
 import AllUsers from './Pages/Dashboard/AllUsers';
+import RequireAdmin from './Pages/Shared/RequireAdmin';
 
 function App() {
   return (
@@ -34,7 +35,11 @@ function App() {
           <Route index element={<AppoinmentList></AppoinmentList>}></Route>
           <Route path='myReview' element={<Review></Review>}></Route>
           <Route path='myHistory' element={<History></History>}></Route>
-          <Route path='allUsers' element={<AllUsers></AllUsers>}></Route>
+          <Route path='allUsers' element={
+            <RequireAdmin>
+              <AllUsers></AllUsers>
+            </RequireAdmin>
+          }></Route>
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signUp' element={<SignUp></SignUp>}></Route>

@@ -12,7 +12,7 @@ const AllUsers = () => {
             }
         })
     )
-    console.log(users?.data);
+    // console.log(users?.data);
     if (isLoading) {
         return <Loader></Loader>
     }
@@ -41,14 +41,21 @@ const AllUsers = () => {
                             users?.data?.map((user, i) => {
 
                                 const makeAdmin = () => {
-                                    axios.put(`http://localhost:5000/user/admin/${user?.email}`, {
-                                        headers: {
+                                    fetch(`http://localhost:5000/user/admin/${user?.email}`, {
+                                        method:'PUT',
+                                        headers:{
                                             'authorization': `bearer ${localStorage.getItem('accessToken')}`
                                         }
                                     })
-                                    .then(data=>{
-                                        console.log(data.data);
-                                        if (data?.data?.acknowledged) {
+                                    .then(res => {
+                                        if(res.status === 403){
+                                            toast.error(`You not Admin!!`)
+                                        }
+                                        return res.json()
+                                    })
+                                    .then(data => {
+                                        console.log(data)
+                                        if (data?.acknowledged) {
                                             toast.success(`${user.email} has been Successfully Made Admin!`)
                                             refetch()
                                         }

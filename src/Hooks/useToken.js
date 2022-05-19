@@ -6,7 +6,7 @@ const useToken = (user) => {
     useEffect(() => {
         if (user) {
             // console.log(user);
-            console.log(user.user.email);
+            // console.log(user.user.email);
             axios.put(`http://localhost:5000/user/${user?.user?.email}`, user?.user?.email)
                 .then(data => {
                     // console.log(data?.data)
