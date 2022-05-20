@@ -27,8 +27,8 @@ const SignUp = () => {
 
 
 
-       // handle error 
-       useEffect(() => {
+    // handle error 
+    useEffect(() => {
         if (error || updateError) {
             console.log(error.code);
             console.log(updateError.code);
@@ -54,7 +54,7 @@ const SignUp = () => {
             toast.success('Login with google Successfully!', { id: "social_login" })
         }
     }, [token, from, navigate])
-    
+
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
@@ -80,7 +80,7 @@ const SignUp = () => {
                         {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                     </label>
 
-                    <input className='input input-bordered input-md my-0.5' placeholder='Email'{...register("email", {
+                    <input className='input input-bordered input-md my-0.5' placeholder='Email'{...register("file", {
                         required: {
                             value: true,
                             message: 'Email is Required'

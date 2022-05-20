@@ -87,7 +87,7 @@ const Login = () => {
             });
 
     }
-  
+
 
 
     return (
@@ -100,7 +100,7 @@ const Login = () => {
                     <input
                         className='input input-bordered input-md my-0.5'
                         placeholder='Email'
-                        {...register("email", {
+                        {...register("file", {
                             required: {
                                 value: true,
                                 message: 'Email is Required'
@@ -109,9 +109,9 @@ const Login = () => {
                                 value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
                                 message: 'Provide a valid Email'
                             }
-                        })} 
-                        onBlur={(e)=> setEmail(e.target.value)}
-                        />
+                        })}
+                        onBlur={(e) => setEmail(e.target.value)}
+                    />
                     <label className="label">
                         {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                         {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}

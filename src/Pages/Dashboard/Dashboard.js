@@ -24,7 +24,12 @@ const Dashboard = () => {
                     <li><Link className='border  my-1' to={"/dashboard/myReview"}>My Reiview</Link></li>
                     <li><Link className='border my-1' to={"/dashboard/myHistory"}>My History</Link></li>
                     {
-                        admin && <li><Link className='border my-1' to={"/dashboard/allUsers"}>All Users</Link></li>
+                        admin &&
+                        <>
+                            <li><Link className='border my-1' to={"/dashboard/allUsers"}>All Users</Link></li>
+                            <li><Link className='border my-1' to={"/dashboard/addDoctors"}>Add Doctors</Link></li>
+                            <li><Link className='border my-1' to={"/dashboard/manageDoctors"}>Manage Doctors</Link></li>
+                        </>
                     }
                 </ul>
 
