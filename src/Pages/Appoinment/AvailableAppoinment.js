@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import React from 'react';
 
 const AvailableAppoinment = ({ service, date, setTreatment }) => {
-    const { _id, name, slots } = service;
+    const { _id, name, slots, price } = service;
     return (
         <div style={{ boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px" }} className='w-80 py-8 rounded-md my-5 mx-5'>
             <h4 className='text-xl font-semibold text-secondary '>{name}</h4>
@@ -11,10 +11,10 @@ const AvailableAppoinment = ({ service, date, setTreatment }) => {
                 slots.length > 0 ? slots[0]
                     : "Try Another Day"
             }</strong></h5>
-            <h5 className='mb-3'><strong>{slots.length} {
+            <h5 className='mb-'><strong>{slots.length} {
                 slots.length > 0 ? " Spaces" : " Space"
             }Available</strong></h5>
-
+            <h5 className='mb-3'><strong>Price : ${price}</strong></h5>
             <label
                 onClick={() => setTreatment(service)}
                 disabled={slots.length === 0}

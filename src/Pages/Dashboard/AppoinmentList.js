@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 import Loader from '../Shared/Loader';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 
@@ -68,6 +68,9 @@ const AppoinmentList = () => {
                             <th scope="col" class="py-2  sm:py-3">
                                 Time
                             </th>
+                            <th scope="col" class="py-2  sm:py-3">
+                                Payment
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -89,6 +92,10 @@ const AppoinmentList = () => {
                                         </td>
                                         <td class="py-2 text-[13px] sm:py-4">
                                             {appoinment.slot}
+                                        </td>
+                                        <td class="py-2 text-[13px] sm:py-4">
+                                            {(appoinment.price && !appoinment.pay) && <Link to={`/dashboard/payment/${appoinment._id}`}><button className='btn btn-xs bg-success text-white border-none'>Pay</button></Link>}
+                                            {(appoinment.price && appoinment.pay) && <p className='text-success'>Paid</p>}
                                         </td>
                                     </tr>
                                 )
