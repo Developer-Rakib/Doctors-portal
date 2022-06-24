@@ -23,6 +23,7 @@ function App() {
     <div >
       <Header />
       <Toaster />
+      
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/appoinment' element={
